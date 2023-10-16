@@ -27,7 +27,36 @@ Tree<string> makeDocumentTree()
     };
 }
 
+void printDocumentOutline(const Node<std::string>& node, int depth)
+{
+    for (int i = 0; i < depth; i++) {
+        cout << "    ";
+    }
+
+    cout << node.e << endl;
+
+    for (auto& child : node.children) {
+        printDocumentOutline(child, depth + 1);
+    }
+}
+
 void printDocumentOutline(const Tree<std::string>& tree)
 {
-    // TODO
+    printDocumentOutline(tree.root, 0);
 }
+
+// Alternative version:
+// void printDocumentOutline(const Node<std::string>& node, std::string indent)
+// {
+//     cout << indent;
+//     cout << node.e << endl;
+
+//     for (auto& child : node.children) {
+//         printDocumentOutline(child, indent + "   ");
+//     }
+// }
+
+// void printDocumentOutline(const Tree<std::string>& tree)
+// {
+//     printDocumentOutline(tree.root, "");
+// }
